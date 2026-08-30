@@ -1,17 +1,21 @@
----@diagnostic disable: lowercase-global
 function love.load()
-	x = 100
-	move = true
+	X = 30
+	Y = 50
 end
 
 function love.update(dt)
-	if love.keyboard.isDown("right") then
-		x = x + 100 * dt
-	elseif love.keyboard.isDown("left") then
-		x = x - 100 * dt
-	end
+
 end
 
 function love.draw()
-	love.graphics.rectangle("line", x, 50, 200, 150)
+	love.graphics.rectangle("line", X, Y, 100, 100)
+	love.graphics.circle("line", X, Y, 50)
+	love.graphics.circle("line", X, Y, 5)
+end
+
+function love.keypressed(key)
+	if key == "space" then
+		X = math.random(100, 500)
+		Y = math.random(100, 500)
+	end
 end
