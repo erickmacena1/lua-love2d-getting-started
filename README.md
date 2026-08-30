@@ -9,3 +9,7 @@ Seguindo o get started de love2d com lua.
 ### Anotações
 - Instalei extensões para a linguagem e debugger
 - 
+
+#### Libs usadas
+- [Classic](https://github.com/rxi/classic) - Lib para criação de objetos
+- [Tick](https://github.com/rxi/tick) - Lib para uso de delays
