@@ -1,21 +1,23 @@
+local r1, r2
+
 function love.load()
-	X = 30
-	Y = 50
+	local Rectangle = require "rectangle"
+	local Circle = require "circle"
+
+	r1 = Rectangle(100, 100, 200, 50)
+	r2 = Circle(350, 80, 40)
 end
 
 function love.update(dt)
-
+	r1:update(dt)
+	r2:update(dt)
 end
 
 function love.draw()
-	love.graphics.rectangle("line", X, Y, 100, 100)
-	love.graphics.circle("line", X, Y, 50)
-	love.graphics.circle("line", X, Y, 5)
+	r1:draw()
+	r2:draw()
 end
 
 function love.keypressed(key)
-	if key == "space" then
-		X = math.random(100, 500)
-		Y = math.random(100, 500)
-	end
+
 end
