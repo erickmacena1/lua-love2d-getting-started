@@ -8,7 +8,7 @@ Seguindo o get started de love2d com lua.
 
 ### Anotações
 - Instalei extensões para a linguagem e debugger
-- 
+- Copiei o template para o projeto e configurei o F5 (task.json)
 
 #### Libs usadas
 - [Classic](https://github.com/rxi/classic) - Lib para criação de objetos
