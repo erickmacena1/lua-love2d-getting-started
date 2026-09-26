@@ -1,32 +1,50 @@
 function love.load()
-	MyImage = love.graphics.newImage("assets/sheep.png")
-	-- Width = MyImage:getWidth()
-	-- Height = MyImage:getHeight()
+	R1 = {
+		x = 10,
+		y = 100,
+		width = 100,
+		height = 100
+	}
 
-	love.graphics.setBackgroundColor(1, 1, 1)
+	R2 = {
+		x = 250,
+		y = 120,
+		width = 150,
+		height = 120
+	}
 end
 
-function love.update()
-
+function love.update(dt)
+	R1.x = R1.x + 100 * dt
 end
 
 function love.draw()
-	-- love.graphics.draw(MyImage, 100, 100)
-	-- love.graphics.draw(MyImage, 200, 100, 0, 2, 2)
-	-- love.graphics.draw(MyImage, 500, 100, 0, -1, 1)
+	local mode
+	if CheckCollision(R1, R2) then
+		mode = "fill"
+	else
+		mode = "line"
+	end
 
-	-- love.graphics.draw(MyImage, 100, 350, 0, 1, 1, 39, 50)
-	-- love.graphics.draw(MyImage, 200, 350, 0, 2, 2, 39, 50)
-	-- love.graphics.draw(MyImage, 500, 350, 0, -1, 1, 39, 50)
+	love.graphics.rectangle(mode, R1.x, R1.y, R1.width, R1.height)
+	love.graphics.rectangle(mode, R2.x, R2.y, R2.width, R2.height)
 
-	-- love.graphics.draw(MyImage, 100, 100, 0, 2, 2, Width/2, Height/2)
+end
 
-	love.graphics.setColor(255/255, 200/255, 40/255, 127/255)
-    love.graphics.setColor(1, 0.78, 0.15, 0.5)
-    -- Or ...
-    love.graphics.draw(MyImage, 100, 100)
-    -- Not passing an argument for alpha automatically sets it to 1 again.
-    love.graphics.setColor(1, 1, 1)
-    love.graphics.draw(MyImage, 200, 100)
+function CheckCollision(a, b)
+	local a_left = a.x
+	local a_right = a.x + a.width
+	local a_top = a.y
+	local a_bottom = a.y + a.height
+	
+	local b_left = b.x
+	local b_right = b.x + b.width
+	local b_top = b.y
+	local b_bottom = b.y + b.height
+
+	return a_right > b_left
+		and a_left < b_left
+		and a_bottom > b_top
+		and a_top < b_bottom
 
 end
