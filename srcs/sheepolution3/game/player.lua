@@ -6,6 +6,7 @@ function Player:new()
     self.y = 20
     self.speed = 500
     self.width = self.image:getWidth()
+    self.height = self.image:getHeight()
 end
 
 function Player:update(dt)
@@ -30,6 +31,6 @@ end
 
 function Player:keyPressed(key)
     if key == "space" then
-        table.insert(ListOfBullets, Bullet(self.x, self.y))
+        table.insert(ListOfBullets, Bullet(self.x + self.width/2, self.y + self.height))
     end
 end

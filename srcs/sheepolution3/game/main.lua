@@ -15,12 +15,21 @@ function love.update(dt)
 
 	for i,v in ipairs(ListOfBullets) do
 		v:update(dt)
+		v:checkCollision(TblEnemy)
+
+		if v.dead then
+			table.remove(ListOfBullets, i)
+		end
 	end
 end
 
 function love.draw()
 	TblPlayer:draw()
 	TblEnemy:draw()
+
+	for i,v in ipairs(ListOfBullets) do
+		v:draw()
+	end
 end
 
 function love.keypressed(key)
