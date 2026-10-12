@@ -37,6 +37,11 @@ function Bullet:checkCollision(obj)
     and self_bottom > obj_top
     and self_top < obj_bottom then
         self.dead = true
-        obj.speed = obj.speed  + 50
+		if obj.speed > 0 then
+			obj.speed = obj.speed  + 50
+		else
+			obj.speed = obj.speed  - 50
+		end
+		
     end
 end
